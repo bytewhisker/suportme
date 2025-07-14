@@ -49,7 +49,7 @@ function createQRCode() {
     ctx.fillRect(104, 104, 32, 32);
     ctx.fillStyle = '#c896ff';
     ctx.fillRect(112, 112, 16, 16);
-    document.getElementById('qrImage').src = canvas.toDataURL();
+    // document.getElementById('qrImage').src = canvas.toDataURL();
 }
 // Create interactive floating particles
 function createParticles() {
