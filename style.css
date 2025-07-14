@@ -359,5 +359,6 @@ h1 {
   }
   .bg-grid, .glow-orb {
     animation: none !important;
+    display: none !important;
   }
 } 
