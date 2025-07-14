@@ -53,6 +53,7 @@ function createQRCode() {
 }
 // Create interactive floating particles
 function createParticles() {
+    if (window.innerWidth <= 600) return; // Disable on mobile
     setInterval(() => {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -67,30 +68,6 @@ function createParticles() {
             particle.remove();
         }, 16000);
     }, 200);
-}
-// Enhanced 3D mouse tracking
-let mouseX = 0, mouseY = 0;
-let targetX = 0, targetY = 0;
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-function updateMouseEffect() {
-    const container = document.querySelector('.container');
-    const rect = container.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    targetX = (mouseX - centerX) / 25;
-    targetY = (mouseY - centerY) / 25;
-    // Smooth interpolation
-    const currentX = parseFloat(container.style.getPropertyValue('--rotateY')) || 0;
-    const currentY = parseFloat(container.style.getPropertyValue('--rotateX')) || 0;
-    const newX = currentX + (targetX - currentX) * 0.1;
-    const newY = currentY + (targetY - currentY) * 0.1;
-    container.style.setProperty('--rotateY', newX);
-    container.style.setProperty('--rotateX', newY);
-    container.style.transform = `translateY(-8px) rotateX(${-newY}deg) rotateY(${newX}deg)`;
-    requestAnimationFrame(updateMouseEffect);
 }
 // Enhanced QR click effect with ripples
 document.getElementById('qrContainer').addEventListener('click', function(e) {
@@ -122,7 +99,6 @@ document.querySelector('.logo').addEventListener('mouseleave', function() {
 // Initialize everything
 createQRCode();
 createParticles();
-updateMouseEffect();
 // Add container glow on load
 setTimeout(() => {
     document.querySelector('.container').classList.add('pulse-glow');
