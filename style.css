@@ -350,4 +350,14 @@ h1 {
             0 25px 50px rgba(0, 0, 0, 0.5),
             0 0 150px rgba(180, 130, 255, 0.4);
     }
-}
+} 
+
+@media (max-width: 600px) {
+  .container {
+    backdrop-filter: none !important;
+    animation: none !important;
+  }
+  .bg-grid, .glow-orb {
+    animation: none !important;
+  }
+} 
